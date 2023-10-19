@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.23](https://github.com/k8sgpt-ai/k8sgpt-operator/compare/v0.0.22...v0.0.23) (2023-10-19)
+
+
+### Other
+
+* **deps:** update actions/setup-python digest to 65d7f2d ([#243](https://github.com/k8sgpt-ai/k8sgpt-operator/issues/243)) ([9500137](https://github.com/k8sgpt-ai/k8sgpt-operator/commit/95001375d8ea2a215a73f174eff8e5fcff1f7a5e))
+* **deps:** update google-github-actions/release-please-action digest to 4c5670f ([#244](https://github.com/k8sgpt-ai/k8sgpt-operator/issues/244)) ([ec7a54c](https://github.com/k8sgpt-ai/k8sgpt-operator/commit/ec7a54c354d4d6bd34836bf50c49ffab827bc963))
+
 ## [0.0.22](https://github.com/k8sgpt-ai/k8sgpt-operator/compare/v0.0.21...v0.0.22) (2023-10-15)
 
 
