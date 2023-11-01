@@ -179,7 +179,7 @@ func (r *K8sGPTReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 			}
 		}
 
-		response, err := k8sgptClient.ProcessAnalysis(deployment, k8sgptConfig)
+		response, err := k8sgptClient.ProcessAnalysis(deployment, k8sgptConfig) // [AMR] calling the analyze API from the operator reconcilliation loop
 		if err != nil {
 			k8sgptReconcileErrorCount.Inc()
 			return r.finishReconcile(err, false)

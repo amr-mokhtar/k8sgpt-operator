@@ -208,6 +208,18 @@ func GetDeployment(config v1alpha1.K8sGPT) (*appsv1.Deployment, error) {
 							},
 							Env: []corev1.EnvVar{
 								{
+									Name:  "http_proxy",
+									Value: "http://proxy-chain.intel.com:912",
+								},
+								{
+									Name:  "https_proxy",
+									Value: "http://proxy-chain.intel.com:912",
+								},
+								{
+									Name:  "no_proxy",
+									Value: ".intel.com,.internal,10.*,127.0.0.1,169.254.169.254,::1,localhost,10.114.181.0/24,10.96.0.0/12,192.168.0.0/16",
+								},
+								{
 									Name:  "K8SGPT_MODEL",
 									Value: config.Spec.AI.Model,
 								},
