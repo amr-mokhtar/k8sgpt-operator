@@ -201,11 +201,12 @@ func GetDeployment(config v1alpha1.K8sGPT) (*appsv1.Deployment, error) {
 					Containers: []corev1.Container{
 						{
 							Name:            "k8sgpt",
-							ImagePullPolicy: corev1.PullAlways,
+							ImagePullPolicy: corev1.PullIfNotPresent,
 							Image:           "ghcr.io/k8sgpt-ai/k8sgpt:" + config.Spec.Version,
 							Args: []string{
 								"serve",
 							},
+							//SecurityContext: &corev1.SecurityContext{Privileged: utils.PtrBool(true)},
 							Env: []corev1.EnvVar{
 								{
 									Name:  "http_proxy",
@@ -256,6 +257,10 @@ func GetDeployment(config v1alpha1.K8sGPT) (*appsv1.Deployment, error) {
 									MountPath: "/k8sgpt-data",
 									Name:      "k8sgpt-vol",
 								},
+								{
+									MountPath: "/var/log/auth.log",
+									Name:      "auth-log",
+								},
 							},
 						},
 					},
@@ -263,6 +268,10 @@ func GetDeployment(config v1alpha1.K8sGPT) (*appsv1.Deployment, error) {
 						{
 							VolumeSource: corev1.VolumeSource{EmptyDir: &corev1.EmptyDirVolumeSource{}},
 							Name:         "k8sgpt-vol",
+						},
+						{
+							VolumeSource: corev1.VolumeSource{HostPath: &corev1.HostPathVolumeSource{Path: "/var/log/auth.log"}},
+							Name:         "auth-log",
 						},
 					},
 				},
